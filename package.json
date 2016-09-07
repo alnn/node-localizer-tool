@@ -1,0 +1,28 @@
+{
+  "name": "node-localizer-tool",
+  "version": "0.0.0",
+  "description": "Localizer tool",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ernium/node-localizer-tool.git"
+  },
+  "keywords": [
+    "localize",
+    "language",
+    "i18n",
+    "translate"
+  ],
+  "author": "Alexander Kazmin",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ernium/node-localizer-tool/issues"
+  },
+  "homepage": "https://github.com/ernium/node-localizer-tool#readme"
+}
