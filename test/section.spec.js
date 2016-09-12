@@ -1,5 +1,6 @@
 'use strict';
 
+/*
 require('sinon-mongoose');
 require('../src/models/section');
 
@@ -69,3 +70,4 @@ describe('Get all sections', () => {
   });
 
 });
+  */

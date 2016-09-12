@@ -1,13 +1,17 @@
 'use strict';
 
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const SectionSchema = new mongoose.Schema({
+const Schema = mongoose.Schema;
+
+const SectionSchema = new Schema({
   name: {
     type: String,
-    index: { unique :true },
+    required: true,
+    unique : true,
     trim: true
   },
+  locales: [{ type: Schema.Types.ObjectId, ref: 'Locale' }],
   createdAt: { type: Date, default: Date.now }
 });
 
@@ -16,20 +20,25 @@ SectionSchema.path('name').required(true, 'Section name cannot be blank');
 SectionSchema.methods = {
 
   getLocales () {
-
+    //return this.locales;
   }
 
 };
 
 SectionSchema.statics = {
 
-  getList ({ criteria = {}, page = 0, limit = 100 }) {
+  getList (options = {}) {
+    let criteria, page, limit;
+
+    criteria = options.criteria || {};
+    page = options.page || 0;
+    limit = options.limit || 100;
+
     return this.find(criteria)
       .sort({ createdAt: -1 })
       .limit(limit)
       .skip(limit * page)
       .exec();
-
   }
 
 };
