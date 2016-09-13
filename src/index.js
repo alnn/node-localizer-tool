@@ -1,15 +1,18 @@
 'use strict';
-
-import { createStore, applyMiddleware } from 'redux';
-import reducer from './reducer';
+import {
+  createStore,
+  applyMiddleware,
+  combineReducers
+} from 'redux';
 import mongoose from 'mongoose';
+
 import sockAPI from './api/socket';
 import { dbMiddleWare } from './middlewares';
+import sections from './reducers/sections';
+import localeterms from './reducers/localeterms';
+import INITIAL_STATE  from './constants/Initial';
 
 import { fetchingSections } from './actions/SectionActions';
-
-const SET_SECTIONS = require('./constants').SET_SECTIONS;
-const INITIAL_STATE = require('./constants').INITIAL_STATE;
 
 module.exports = {
   init: (options) => {
@@ -20,7 +23,7 @@ module.exports = {
     mongoose.connect('mongodb://localhost/localizertool_test');
 
     const store = createStore(
-      reducer,
+      combineReducers([sections, localeterms]),
       INITIAL_STATE,
       applyMiddleware(dbMiddleWare)
     );

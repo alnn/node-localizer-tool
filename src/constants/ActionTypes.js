@@ -29,8 +29,22 @@ export default keyMirror({
 
   FETCH_SECTIONS: null,
   FETCH_LOCALES: null,
-  FETCH_NODES: null
+  FETCH_NODES: null,
 
+  FETCHING_LOCALE_TERMS: null,
+  SET_LOCALE_TERMS: null,
+  FAIL_FETCHING: null,
 
+  INSERTING_LOCALE_TERM: null,
+  ADD_LOCALE_TERM: null,
+  FAIL_INSERTING: null,
+
+  UPDATING_LOCALE_TERM: null,
+  CHANGE_LOCALE_TERM: null,
+  FAIL_UPDATING: null,
+
+  DELETING_LOCALE_TERM: null,
+  REMOVE_LOCALE_TERM: null,
+  FAIL_DELETING: null
 
 });
