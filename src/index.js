@@ -2,6 +2,7 @@
 
 import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducer';
+import mongoose from 'mongoose';
 import sockAPI from './api/socket';
 import { dbMiddleWare } from './middlewares';
 
@@ -15,6 +16,8 @@ module.exports = {
 
     const mongodb = options.mongodb;
     const server  = options.server;
+
+    mongoose.connect('mongodb://localhost/localizertool_test');
 
     const store = createStore(
       reducer,

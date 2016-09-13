@@ -5,44 +5,6 @@ const List = immutable.List;
 const Map = immutable.Map;
 const fromJS = immutable.fromJS;
 
-const dbAPI = require('./api/db');
-
-
-
-function _addLocale (state, id) {
-
-}
-
-function _removeLocale (state, id) {
-
-}
-
-module.exports = {
-
-  setSections (state) {
-    return state.set('sections', fromJS(dbAPI.getSections()));
-  },
-
-  addSection (state, section) {
-    return state;
-  },
-
-  removeSection (state, section) {
-    return state;
-  },
-
-  changeSection (state, section) {
-    return state;
-  },
-
-  setCurrent (state, id) {
-
-    const section = dbAPI.getSections(id)[0];
-
-    return state.set('current', Map(section));
-  }
-
-};
 
 const state_initial = {
   sections: [],
@@ -83,8 +45,3 @@ const state_full = {
     }
   }
 };
-
-
-
-
-

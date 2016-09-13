@@ -7,11 +7,10 @@ const Schema = mongoose.Schema;
 const SectionSchema = new Schema({
   name: {
     type: String,
-    required: true,
     unique : true,
     trim: true
   },
-  locales: [{ type: Schema.Types.ObjectId, ref: 'Locale' }],
+  locales: Array,
   createdAt: { type: Date, default: Date.now }
 });
 
@@ -19,26 +18,42 @@ SectionSchema.path('name').required(true, 'Section name cannot be blank');
 
 SectionSchema.methods = {
 
+  addLocale(id) {
+    this.locales = [...new Set([...this.locales, id])];
+    return this;
+  },
+
+  removeLocale(id) {
+    this.locales = this.locales.filter(item => item !== id);
+    return this;
+  },
+
   getLocales () {
-    //return this.locales;
+    return this.locales;
+  },
+
+  getNodeList (locale) {
+    // todo: fetch nodes by locale
+  },
+
+  toPlain () {
+    return {
+      id: this._id.toString(),
+      name: this.name,
+      locales: this.getLocales()
+    }
   }
 
 };
 
 SectionSchema.statics = {
 
-  getList (options = {}) {
-    let criteria, page, limit;
+  getList (criteria = {}) {
+    return this.find(criteria).exec();
+  },
 
-    criteria = options.criteria || {};
-    page = options.page || 0;
-    limit = options.limit || 100;
-
-    return this.find(criteria)
-      .sort({ createdAt: -1 })
-      .limit(limit)
-      .skip(limit * page)
-      .exec();
+  removeById (id) {
+    return this.find({ _id: id }).remove().exec();
   }
 
 };

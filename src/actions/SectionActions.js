@@ -1,9 +1,9 @@
 'use strict';
 
+import mongoose from 'mongoose';
 import types from '../constants/ActionTypes';
-import dbApi from '../api/db';
 
-// TODO: replace dbApi by mongoose just here
+const Section = mongoose.model('Section');
 
 // Async action creators:
 
@@ -15,7 +15,11 @@ export function fetchSections () {
       fail: types.FAIL_SECTIONS
     },
     params: {},
-    requestingAPI: () => dbApi.fetchSections(),
+    requestingAPI: () => {
+      return Section.getList().then((result) => {
+        return result.map(item => item.toPlain());
+      });
+    },
   };
 }
 
@@ -29,7 +33,11 @@ export function insertSection (name) {
     params: {
       name
     },
-    requestingAPI: () => dbApi.insertSection(name)
+    requestingAPI: () => {
+      return (new Section({ name })).save().then((result) => {
+        return result.toPlain();
+      });
+    }
   };
 }
 
@@ -43,7 +51,11 @@ export function updateSection (id, name) {
     params: {
       id, name
     },
-    requestingAPI: () => dbApi.updateSection(id, name)
+    requestingAPI: () => {
+      return Section.findOneAndUpdate({ _id: id }, { name: name }).exec().then((section) => {
+        return section && section.toPlain();
+      });
+    }
   };
 }
 
@@ -57,7 +69,11 @@ export function deleteSection (id) {
     params: {
       id
     },
-    requestingAPI: () => dbApi.deleteSection(id)
+    requestingAPI: () => {
+      return Section.removeById(id).then(() => {
+        return id;
+      });
+    }
   };
 }
 
@@ -71,7 +87,13 @@ export function insertLocale (sectionID, localeID) {
     params: {
       sectionID, localeID
     },
-    requestingAPI: () => dbApi.insertLocale(sectionID, localeID)
+    requestingAPI: () => {
+      return Section.find({ _id: sectionID }).exec().then((section) => {
+        return section[0].addLocale(localeID).save();
+      }).then((section) => {
+        return section && section.toPlain();
+      });
+    }
   };
 }
 
@@ -85,7 +107,13 @@ export function deleteLocale (sectionID, localeID) {
     params: {
       sectionID, localeID
     },
-    requestingAPI: () =>  dbApi.deleteLocale(sectionID, localeID)
+    requestingAPI: () =>  {
+      return Section.find({ _id: sectionID }).exec().then(section => {
+        return section[0].removeLocale(localeID).save();
+      }).then(section => {
+        return section && section.toPlain();
+      });
+    }
   };
 }
 
