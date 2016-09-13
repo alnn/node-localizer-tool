@@ -10,6 +10,7 @@ import sockAPI from './api/socket';
 import { dbMiddleWare } from './middlewares';
 import sections from './reducers/sections';
 import localeterms from './reducers/localeterms';
+import fails from './reducers/fails';
 import INITIAL_STATE  from './constants/Initial';
 
 import { fetchingSections } from './actions/SectionActions';
@@ -23,7 +24,7 @@ module.exports = {
     mongoose.connect('mongodb://localhost/localizertool_test');
 
     const store = createStore(
-      combineReducers([sections, localeterms]),
+      combineReducers([sections, localeterms, fails]),
       INITIAL_STATE,
       applyMiddleware(dbMiddleWare)
     );

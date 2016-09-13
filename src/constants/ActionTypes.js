@@ -5,46 +5,36 @@ import keyMirror from 'key-mirror';
 export default keyMirror({
 
   FETCHING_SECTIONS: null,
-  INSERTING_SECTION: null,
-  UPDATING_SECTION: null,
-  DELETING_SECTION: null,
+  FETCHING_LOCALE_TERMS: null,
 
   SET_SECTIONS: null,
-  ADD_SECTION: null,
-  CHANGE_SECTION: null,
+  SET_LOCALE_TERMS: null,
 
-  ADD_LOCALE: null,
+  INSERTING_SECTION: null,
   INSERTING_LOCALE: null,
+  INSERTING_LOCALE_TERM: null,
+
+  UPDATING_SECTION: null,
+  UPDATING_LOCALE_TERM: null,
+
+  ADD_SECTION: null,
+  ADD_LOCALE: null,
+  ADD_LOCALE_TERM: null,
+
+  CHANGE_SECTION: null,
+  CHANGE_LOCALE_TERM: null,
+
+  DELETING_SECTION: null,
   DELETING_LOCALE: null,
-
-  FAIL_SECTIONS: null,
-
-  SAVE_SECTION: null,
-  SAVE_LOCALE: null,
-  SAVE_NODE: null,
+  DELETING_LOCALE_TERM: null,
 
   REMOVE_SECTION: null,
   REMOVE_LOCALE: null,
-  REMOVE_NODE: null,
-
-  FETCH_SECTIONS: null,
-  FETCH_LOCALES: null,
-  FETCH_NODES: null,
-
-  FETCHING_LOCALE_TERMS: null,
-  SET_LOCALE_TERMS: null,
-  FAIL_FETCHING: null,
-
-  INSERTING_LOCALE_TERM: null,
-  ADD_LOCALE_TERM: null,
-  FAIL_INSERTING: null,
-
-  UPDATING_LOCALE_TERM: null,
-  CHANGE_LOCALE_TERM: null,
-  FAIL_UPDATING: null,
-
-  DELETING_LOCALE_TERM: null,
   REMOVE_LOCALE_TERM: null,
+
+  FAIL_FETCHING: null,
+  FAIL_INSERTING: null,
+  FAIL_UPDATING: null,
   FAIL_DELETING: null
 
 });
