@@ -1,9 +1,28 @@
 'use strict';
-
 import mongoose from 'mongoose';
+import actionCreator from '../libs/actionCreator';
 import types from '../constants/ActionTypes';
 
 const Section = mongoose.model('Section');
+
+export const fetchingSections = actionCreator(types.FETCHING_SECTIONS);
+export const setSections = actionCreator(types.SET_SECTIONS, 'result');
+export const failSections = actionCreator(types.FAIL_SECTIONS, 'error');
+
+export const insertingSection = actionCreator(types.INSERTING_SECTION, 'name');
+export const addSection = actionCreator(types.ADD_SECTION, 'name', 'result');
+
+export const updatingSection = actionCreator(types.UPDATING_SECTION, 'id', 'name');
+export const changeSection = actionCreator(types.CHANGE_SECTION, 'id', 'name', 'result');
+
+export const deletingSection = actionCreator(types.DELETING_SECTION, 'id');
+export const removeSection = actionCreator(types.REMOVE_SECTION, 'id');
+
+export const insertingLocale = actionCreator(types.INSERTING_LOCALE, 'sectionID', 'localeID');
+export const addLocale = actionCreator(types.ADD_LOCALE, 'sectionID', 'localeID', 'result');
+
+export const deletingLocale = actionCreator(types.DELETING_LOCALE, 'sectionID', 'localeID');
+export const removeLocale = actionCreator(types.REMOVE_LOCALE, 'sectionID', 'localeID', 'result');
 
 // Async action creators:
 
@@ -52,7 +71,7 @@ export function updateSection (id, name) {
       id, name
     },
     requestingAPI: () => {
-      return Section.findOneAndUpdate({ _id: id }, { name: name }).exec().then((section) => {
+      return Section.findOneAndUpdate({ _id: id }, { name }).exec().then((section) => {
         return section && section.toPlain();
       });
     }
@@ -116,35 +135,3 @@ export function deleteLocale (sectionID, localeID) {
     }
   };
 }
-
-// Plain action creators:
-const generateActionCreator = (type, ...argNames) => {
-  return function(...args) {
-
-    let action = { type }
-    argNames.forEach((arg, index) => {
-      action[argNames[index]] = args[index];
-    });
-
-    return action;
-  }
-};
-
-export const fetchingSections = generateActionCreator(types.FETCHING_SECTIONS);
-export const setSections = generateActionCreator(types.SET_SECTIONS, 'result');
-export const failSections = generateActionCreator(types.FAIL_SECTIONS, 'error');
-
-export const insertingSection = generateActionCreator(types.INSERTING_SECTION, 'name');
-export const addSection = generateActionCreator(types.ADD_SECTION, 'name', 'result');
-
-export const updatingSection = generateActionCreator(types.UPDATING_SECTION, 'id', 'name');
-export const changeSection = generateActionCreator(types.CHANGE_SECTION, 'id', 'name', 'result');
-
-export const deletingSection = generateActionCreator(types.DELETING_SECTION, 'id');
-export const removeSection = generateActionCreator(types.REMOVE_SECTION, 'id');
-
-export const insertingLocale = generateActionCreator(types.INSERTING_LOCALE, 'sectionID', 'localeID');
-export const addLocale = generateActionCreator(types.ADD_LOCALE, 'sectionID', 'localeID', 'result');
-
-export const deletingLocale = generateActionCreator(types.DELETING_LOCALE, 'sectionID', 'localeID');
-export const removeLocale = generateActionCreator(types.REMOVE_LOCALE, 'sectionID', 'localeID', 'result');

@@ -32,6 +32,7 @@ LocaleTermSchema.methods = {
 
   toPlain () {
     return {
+      id: this._id.toString(),
       path: this.path.slice(1),
       phrase: this.getPhrase()
     }
@@ -50,6 +51,10 @@ LocaleTermSchema.statics = {
 
   removeTerm (sectionID, path) {
     return this.find({ _section: sectionID, path }).remove().exec();
+  },
+
+  removeById (id) {
+    return this.find({ _id: id }).remove().exec();
   }
 
 };

@@ -32,10 +32,12 @@ const state_full = {
       name: 'English',
       nodes: [
         {
+          id: '98dafghkj32fk32jflkj23kj',
           path: [ 'hello' ],
           phrase: 'Hello!'
         },
         {
+          id: '89uad0fsd98f0dufiv0asdjk',
           path: [ 'world' ],
           phrase: 'World!'
         }
