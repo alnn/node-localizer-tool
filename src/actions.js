@@ -32,14 +32,12 @@ const state_full = {
       name: 'English',
       nodes: [
         {
-          path: 'en/hello',
-          term: 'hello',
-          translation: 'Hello!'
+          path: [ 'hello' ],
+          phrase: 'Hello!'
         },
         {
-          path: 'en/world',
-          term: 'world',
-          translation: 'World!'
+          path: [ 'world' ],
+          phrase: 'World!'
         }
       ]
     }

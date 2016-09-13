@@ -7,8 +7,7 @@ import { fromJS } from 'immutable';
 import mongoose from 'mongoose';
 import co from 'co';
 
-import '../src/models/section';
-import '../src/models/locale';
+import '../src/models/Section';
 
 import types from '../src/constants/ActionTypes';
 import INITIAL_STATE from '../src/constants/Initial';

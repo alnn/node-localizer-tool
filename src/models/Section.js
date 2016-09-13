@@ -32,8 +32,9 @@ SectionSchema.methods = {
     return this.locales;
   },
 
-  getNodeList (locale) {
-    // todo: fetch nodes by locale
+  getTermsByLocale (locale) {
+    const LocaleTerm = mongoose.model('LocaleTerm');
+    return LocaleTerm.getList(this._id, locale);
   },
 
   toPlain () {
