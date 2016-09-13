@@ -1,16 +1,12 @@
 'use strict';
 
 import { fromJS } from 'immutable';
+import reducerCreator from '../libs/reducerCreator';
 import types from '../constants/ActionTypes';
 import INITIAL_STATE from '../constants/Initial';
 
-function createReducer (firstState, handlers) {
-  return (state = firstState, action) => {
-      return handlers[action.type] ? handlers[action.type](state, action) : state;
-  };
-}
 
-export const sections = createReducer(INITIAL_STATE, {
+export const sections = reducerCreator(INITIAL_STATE, {
   [types.FETCHING_SECTIONS] (state, action) {
     return state;
   },
