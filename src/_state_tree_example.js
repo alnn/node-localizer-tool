@@ -46,7 +46,7 @@ const state_example = {
         path: [ 'world' ],
         phrase: 'World!'
       }
-    ],
+    ]
   },
   error: null
 };

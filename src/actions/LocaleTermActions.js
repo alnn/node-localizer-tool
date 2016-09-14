@@ -6,7 +6,7 @@ import types from '../constants/ActionTypes';
 const LocaleTerm = mongoose.model('LocaleTerm');
 
 export const fetchingLocaleTerms = actionCreator(types.FETCHING_LOCALE_TERMS, 'section', 'locale');
-export const setLocaleTerms = actionCreator(types.SET_LOCALE_TERMS, 'result');
+export const setLocaleTerms = actionCreator(types.SET_LOCALE_TERMS, 'result', 'section', 'locale');
 
 export const insertingLocaleTerm = actionCreator(types.INSERTING_LOCALE_TERM, 'section', 'locale', 'path');
 export const addLocaleTerm = actionCreator(types.ADD_LOCALE_TERM, 'result');
@@ -31,7 +31,7 @@ export function fetchLocaleTerms (section, locale) {
       locale
     },
     requestingAPI: () => {
-      return LocaleTerm.getList(section, locale).then((result) => {
+      return LocaleTerm.getList(section.id, locale.id).then((result) => {
         return result.map(item => item.toPlain());
       });
     },
