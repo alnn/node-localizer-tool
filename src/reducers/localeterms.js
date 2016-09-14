@@ -5,7 +5,7 @@ import types from '../constants/ActionTypes';
 import INITIAL_STATE from '../constants/Initial';
 
 export const localeterms = reducerCreator(INITIAL_STATE, {
-  [types.FETCHING_LOCALE_TERMS] (state, action) {
+  [types.FETCHING_LOCALE_TERMS] (state) {
     return state;
   },
   [types.SET_LOCALE_TERMS] (state, action) {
@@ -15,13 +15,13 @@ export const localeterms = reducerCreator(INITIAL_STATE, {
       list: action.result
     }));
   },
-  [types.INSERTING_LOCALE_TERM] (state, action) {
+  [types.INSERTING_LOCALE_TERM] (state) {
     return state;
   },
   [types.ADD_LOCALE_TERM] (state, action) {
     return state.updateIn([ 'terms', 'list' ], list => list.push(action.result));
   },
-  [types.UPDATING_LOCALE_TERM] (state, action) {
+  [types.UPDATING_LOCALE_TERM] (state) {
     return state;
   },
   [types.CHANGE_LOCALE_TERM] (state, action) {
@@ -30,10 +30,10 @@ export const localeterms = reducerCreator(INITIAL_STATE, {
     ).filter(item => item !== undefined).get(0);
     return state.updateIn([ 'terms', 'list' ], list => list.setIn([index], action.result));
   },
-  [types.DELETING_LOCALE_TERM] (state, action) {
+  [types.DELETING_LOCALE_TERM] (state) {
     return state;
   },
   [types.REMOVE_LOCALE_TERM] (state, action) {
-    return state.setIn([ 'terms', 'list' ], state.getIn([ 'terms', 'list' ]).filter(term => term.id !== term.id));
+    return state.setIn([ 'terms', 'list' ], state.getIn([ 'terms', 'list' ]).filter(term => term.id !== action.id));
   }
 });

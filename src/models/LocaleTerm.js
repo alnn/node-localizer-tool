@@ -35,7 +35,7 @@ LocaleTermSchema.methods = {
       id: this._id.toString(),
       path: this.path.slice(1),
       phrase: this.getPhrase()
-    }
+    };
   }
 
 };

@@ -18,12 +18,12 @@ SectionSchema.path('name').required(true, 'Section name cannot be blank');
 
 SectionSchema.methods = {
 
-  addLocale(id) {
+  addLocale (id) {
     this.locales = [...new Set([...this.locales, id])];
     return this;
   },
 
-  removeLocale(id) {
+  removeLocale (id) {
     this.locales = this.locales.filter(item => item !== id);
     return this;
   },
@@ -42,7 +42,7 @@ SectionSchema.methods = {
       id: this._id.toString(),
       name: this.name,
       locales: this.getLocales()
-    }
+    };
   }
 
 };

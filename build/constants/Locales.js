@@ -1,6 +1,9 @@
 'use strict';
 
-export default {
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = {
   af_NA: 'Afrikaans (Namibia)',
   af_ZA: 'Afrikaans (South Africa)',
   af: 'Afrikaans',

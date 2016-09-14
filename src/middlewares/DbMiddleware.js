@@ -1,6 +1,6 @@
 'use strict';
 
-export default function({ dispatch, getState }) {
+export default function ({ dispatch }) {
 
   return next => action => {
     const {
@@ -18,7 +18,7 @@ export default function({ dispatch, getState }) {
       throw new Error('queryingAPI must be a function');
     }
 
-    const {pre, success, fail} = types;
+    const { pre, success, fail } = types;
 
     dispatch({ type: pre, ...params });
 
@@ -30,4 +30,4 @@ export default function({ dispatch, getState }) {
 
   };
 
-};
+}
