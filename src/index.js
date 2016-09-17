@@ -11,7 +11,7 @@ import dbMiddleWare from './middlewares/DbMiddleware';
 import sections from './reducers/sections';
 import localeterms from './reducers/localeterms';
 import fails from './reducers/fails';
-import INITIAL_STATE  from './constants/Initial';
+import { INITIAL_STATE } from './constants/Initial';
 
 
 export default options => {
