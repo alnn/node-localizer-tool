@@ -14,7 +14,9 @@ var _socket = require('./api/socket');
 
 var _socket2 = _interopRequireDefault(_socket);
 
-var _middlewares = require('./middlewares');
+var _DbMiddleware = require('./middlewares/DbMiddleware');
+
+var _DbMiddleware2 = _interopRequireDefault(_DbMiddleware);
 
 var _sections = require('./reducers/sections');
 
@@ -41,7 +43,7 @@ exports.default = {
 
     (0, _mongoose2.default)(options.mongoose);
 
-    var store = (0, _redux.createStore)((0, _redux.combineReducers)([_sections2.default, _localeterms2.default, _fails2.default]), _Initial2.default, (0, _redux.applyMiddleware)(_middlewares.dbMiddleWare));
+    var store = (0, _redux.createStore)((0, _redux.combineReducers)([_sections2.default, _localeterms2.default, _fails2.default]), _Initial2.default, (0, _redux.applyMiddleware)(_DbMiddleware2.default));
 
     (0, _socket2.default)(store, options.server);
 

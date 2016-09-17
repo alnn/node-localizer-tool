@@ -2,9 +2,9 @@
 import { fromJS } from 'immutable';
 import reducerCreator from '../libs/reducerCreator';
 import types from '../constants/ActionTypes';
-import INITIAL_STATE from '../constants/Initial';
+import { INITIAL_STATE } from '../constants/Initial';
 
-export const localeterms = reducerCreator(INITIAL_STATE, {
+export default reducerCreator(INITIAL_STATE, {
   [types.FETCHING_LOCALE_TERMS] (state) {
     return state;
   },

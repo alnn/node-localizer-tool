@@ -1,8 +1,8 @@
 'use strict';
 
-const io = require('socket.io');
+import io from 'socket.io';
 
-module.exports = (store, server) => {
+export default (store, server) => {
 
   const ioServ = io.listen(server, { transports: ['websocket'] });
 

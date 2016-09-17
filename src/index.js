@@ -7,18 +7,18 @@ import {
 import mongoose from './libs/mongoose';
 
 import sockAPI from './api/socket';
-import { dbMiddleWare } from './middlewares';
+import dbMiddleWare from './middlewares/DbMiddleware';
 import sections from './reducers/sections';
 import localeterms from './reducers/localeterms';
 import fails from './reducers/fails';
 import INITIAL_STATE  from './constants/Initial';
 
-import { fetchingSections } from './actions/SectionActions';
 
-export default {
-  init: (options) => {
+export default options => {
 
-    mongoose(options.mongoose);
+  mongoose(options.mongoose).once('open', () => {
+
+    const sectionActions = require('./actions/SectionActions');
 
     const store = createStore(
       combineReducers([sections, localeterms, fails]),
@@ -28,7 +28,8 @@ export default {
 
     sockAPI(store, options.server);
 
-    store.dispatch(fetchingSections());
+    store.dispatch(sectionActions.fetchingSections());
 
-  }
+  });
+
 };

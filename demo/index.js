@@ -2,8 +2,9 @@
 
 const app = require('express')();
 const server = require('http').createServer(app);
-const localizerTool = require('../build/index');
 const front = require('../../react-localizer/index');
+
+import localizerTool from '../src/index';
 
 app.get('/',function(req,res){
   res.send(front);
@@ -11,7 +12,7 @@ app.get('/',function(req,res){
 
 server.listen(3333, function() {
 
-  localizerTool.init({
+  localizerTool({
     mongoose: {
       uri: 'mongodb://localhost/localizertool_test',
       options: {}

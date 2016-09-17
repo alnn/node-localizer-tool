@@ -3,8 +3,6 @@ import mongoose from 'mongoose';
 import actionCreator from '../libs/actionCreator';
 import types from '../constants/ActionTypes';
 
-const Section = mongoose.model('Section');
-
 export const fetchingSections = actionCreator(types.FETCHING_SECTIONS);
 export const setSections = actionCreator(types.SET_SECTIONS, 'result');
 
@@ -22,6 +20,8 @@ export const addLocale = actionCreator(types.ADD_LOCALE, 'sectionID', 'localeID'
 
 export const deletingLocale = actionCreator(types.DELETING_LOCALE, 'sectionID', 'localeID');
 export const removeLocale = actionCreator(types.REMOVE_LOCALE, 'sectionID', 'localeID', 'result');
+
+const Section = mongoose.model('Section');
 
 // Async action creators:
 

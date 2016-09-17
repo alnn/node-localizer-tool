@@ -1,14 +1,10 @@
 'use strict';
 import mongoose from 'mongoose';
+// Load models
+import '../models/Section';
+import '../models/LocaleTerm';
 
-export default function (params) {
-
-  mongoose.Promise = Promise;
-  mongoose.connect(params.uri, params.options);
-
-  // Load models
-  require('../models/Section');
-  require('../models/LocaleTerm');
-
-  return mongoose;
+export default params => {
+  mongoose.Promise = Promise;;
+  return mongoose.connect(params.uri, params.options).connection;
 }

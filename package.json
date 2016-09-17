@@ -10,7 +10,7 @@
     "test": "mocha --compilers js:babel-core/register --require babel-polyfill --require ./test/test_helper.js --recursive",
     "test:watch": "npm run test -- --watch",
     "build": "babel src -d build",
-    "start": "npm run build && node ./demo/index.js"
+    "demo": "babel-node ./demo/index.js"
   },
   "babel": {
     "presets": [
