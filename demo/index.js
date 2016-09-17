@@ -12,7 +12,10 @@ app.get('/',function(req,res){
 server.listen(3333, function() {
 
   localizerTool.init({
-    mongodb: '//localhost/localizertool_test',
+    mongoose: {
+      uri: 'mongodb://localhost/localizertool_test',
+      options: {}
+    },
     //route: 'localhost:3333/localizer',
     server
   });

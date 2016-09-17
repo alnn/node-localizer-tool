@@ -4,7 +4,7 @@ import {
   applyMiddleware,
   combineReducers
 } from 'redux';
-import mongoose from 'mongoose';
+import mongoose from './libs/mongoose';
 
 import sockAPI from './api/socket';
 import { dbMiddleWare } from './middlewares';
@@ -15,13 +15,10 @@ import INITIAL_STATE  from './constants/Initial';
 
 import { fetchingSections } from './actions/SectionActions';
 
-module.exports = {
+export default {
   init: (options) => {
 
-    const mongodb = options.mongodb;
-    const server  = options.server;
-
-    mongoose.connect('mongodb://localhost/localizertool_test');
+    mongoose(options.mongoose);
 
     const store = createStore(
       combineReducers([sections, localeterms, fails]),
@@ -29,7 +26,7 @@ module.exports = {
       applyMiddleware(dbMiddleWare)
     );
 
-    sockAPI(store, server);
+    sockAPI(store, options.server);
 
     store.dispatch(fetchingSections());
 
