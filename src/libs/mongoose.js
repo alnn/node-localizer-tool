@@ -7,8 +7,8 @@ export default function (params) {
   mongoose.connect(params.uri, params.options);
 
   // Load models
-  import '../models/Section';
-  import '../models/LocaleTerm';
+  require('../models/Section');
+  require('../models/LocaleTerm');
 
   return mongoose;
 }

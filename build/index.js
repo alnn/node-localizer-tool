@@ -1,8 +1,12 @@
 'use strict';
 
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
 var _redux = require('redux');
 
-var _mongoose = require('mongoose');
+var _mongoose = require('./libs/mongoose');
 
 var _mongoose2 = _interopRequireDefault(_mongoose);
 
@@ -32,17 +36,14 @@ var _SectionActions = require('./actions/SectionActions');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-module.exports = {
+exports.default = {
   init: function init(options) {
 
-    var mongodb = options.mongodb;
-    var server = options.server;
-
-    _mongoose2.default.connect('mongodb://localhost/localizertool_test');
+    (0, _mongoose2.default)(options.mongoose);
 
     var store = (0, _redux.createStore)((0, _redux.combineReducers)([_sections2.default, _localeterms2.default, _fails2.default]), _Initial2.default, (0, _redux.applyMiddleware)(_middlewares.dbMiddleWare));
 
-    (0, _socket2.default)(store, server);
+    (0, _socket2.default)(store, options.server);
 
     store.dispatch((0, _SectionActions.fetchingSections)());
   }
