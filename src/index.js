@@ -9,7 +9,7 @@ import mongoose from './libs/mongoose';
 import sockAPI from './api/socket';
 import dbMiddleWare from './middlewares/DbMiddleware';
 import sections from './reducers/sections';
-import localeterms from './reducers/localeterms';
+import terms from './reducers/terms';
 import fail from './reducers/fail';
 import { INITIAL_STATE } from './constants/Initial';
 

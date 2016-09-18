@@ -27,25 +27,25 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 var LocaleTerm = _mongoose2.default.model('LocaleTerm');
 
-var fetchingLocaleTerms = exports.fetchingLocaleTerms = (0, _actionCreator2.default)(_ActionTypes2.default.FETCHING_LOCALE_TERMS, 'section', 'locale');
-var setLocaleTerms = exports.setLocaleTerms = (0, _actionCreator2.default)(_ActionTypes2.default.SET_LOCALE_TERMS, 'result', 'section', 'locale');
+var fetchingLocaleTerms = exports.fetchingLocaleTerms = (0, _actionCreator2.default)(_ActionTypes2.default.FETCHING_TERMS, 'section', 'locale');
+var setLocaleTerms = exports.setLocaleTerms = (0, _actionCreator2.default)(_ActionTypes2.default.SET_TERMS, 'result', 'section', 'locale');
 
-var insertingLocaleTerm = exports.insertingLocaleTerm = (0, _actionCreator2.default)(_ActionTypes2.default.INSERTING_LOCALE_TERM, 'section', 'locale', 'path');
-var addLocaleTerm = exports.addLocaleTerm = (0, _actionCreator2.default)(_ActionTypes2.default.ADD_LOCALE_TERM, 'result');
+var insertingLocaleTerm = exports.insertingLocaleTerm = (0, _actionCreator2.default)(_ActionTypes2.default.INSERTING_TERM, 'section', 'locale', 'path');
+var addLocaleTerm = exports.addLocaleTerm = (0, _actionCreator2.default)(_ActionTypes2.default.ADD_TERM, 'result');
 
-var updatingLocaleTerm = exports.updatingLocaleTerm = (0, _actionCreator2.default)(_ActionTypes2.default.UPDATING_LOCALE_TERM, 'id', 'phrase');
-var changeLocaleTerm = exports.changeLocaleTerm = (0, _actionCreator2.default)(_ActionTypes2.default.CHANGE_LOCALE_TERM, 'result');
+var updatingLocaleTerm = exports.updatingLocaleTerm = (0, _actionCreator2.default)(_ActionTypes2.default.UPDATING_TERM, 'id', 'phrase');
+var changeLocaleTerm = exports.changeLocaleTerm = (0, _actionCreator2.default)(_ActionTypes2.default.CHANGE_TERM, 'result');
 
-var deletingLocaleTerm = exports.deletingLocaleTerm = (0, _actionCreator2.default)(_ActionTypes2.default.DELETING_LOCALE_TERM, 'id');
-var removeLocaleTerm = exports.removeLocaleTerm = (0, _actionCreator2.default)(_ActionTypes2.default.REMOVE_LOCALE_TERM, 'id');
+var deletingLocaleTerm = exports.deletingLocaleTerm = (0, _actionCreator2.default)(_ActionTypes2.default.DELETING_TERM, 'id');
+var removeLocaleTerm = exports.removeLocaleTerm = (0, _actionCreator2.default)(_ActionTypes2.default.REMOVE_TERM, 'id');
 
 // Async action creators:
 
 function fetchLocaleTerms(section, locale) {
   return {
     types: {
-      pre: _ActionTypes2.default.FETCHING_LOCALE_TERMS,
-      success: _ActionTypes2.default.SET_LOCALE_TERMS,
+      pre: _ActionTypes2.default.FETCHING_TERMS,
+      success: _ActionTypes2.default.SET_TERMS,
       fail: _ActionTypes2.default.FAIL_FETCHING
     },
     params: {
@@ -65,8 +65,8 @@ function fetchLocaleTerms(section, locale) {
 function insertLocaleTerm(section, locale, path) {
   return {
     types: {
-      pre: _ActionTypes2.default.INSERTING_LOCALE_TERM,
-      success: _ActionTypes2.default.ADD_LOCALE_TERM,
+      pre: _ActionTypes2.default.INSERTING_TERM,
+      success: _ActionTypes2.default.ADD_TERM,
       fail: _ActionTypes2.default.FAIL_INSERTING
     },
     params: {
@@ -88,8 +88,8 @@ function insertLocaleTerm(section, locale, path) {
 function updateLocaleTerm(id, phrase) {
   return {
     types: {
-      pre: _ActionTypes2.default.UPDATING_LOCALE_TERM,
-      success: _ActionTypes2.default.CHANGE_LOCALE_TERM,
+      pre: _ActionTypes2.default.UPDATING_TERM,
+      success: _ActionTypes2.default.CHANGE_TERM,
       fail: _ActionTypes2.default.FAIL_UPDATING
     },
     params: {
@@ -107,8 +107,8 @@ function updateLocaleTerm(id, phrase) {
 function deleteLocaleTerm(id) {
   return {
     types: {
-      pre: _ActionTypes2.default.DELETING_LOCALE_TERM,
-      success: _ActionTypes2.default.REMOVE_LOCALE_TERM,
+      pre: _ActionTypes2.default.DELETING_TERM,
+      success: _ActionTypes2.default.REMOVE_TERM,
       fail: _ActionTypes2.default.FAIL_DELETING
     },
     params: {

@@ -2,7 +2,7 @@
 import mongoose from 'mongoose';
 // Load models
 import '../models/Section';
-import '../models/LocaleTerm';
+import '../models/Term';
 
 export default params => {
   mongoose.Promise = Promise;;

@@ -4,7 +4,7 @@ import locales from '../constants/Locales';
 
 const Schema = mongoose.Schema;
 
-const LocaleTermSchema = new Schema({
+const TermSchema = new Schema({
   _section: {
     type: Schema.ObjectId,
     required: 'Section id is required'
@@ -24,7 +24,7 @@ const LocaleTermSchema = new Schema({
   phrase: String
 });
 
-LocaleTermSchema.methods = {
+TermSchema.methods = {
 
   getPhrase () {
     return this.phrase;
@@ -40,7 +40,7 @@ LocaleTermSchema.methods = {
 
 };
 
-LocaleTermSchema.statics = {
+TermSchema.statics = {
 
   getList (sectionID, localeID) {
     return this.find({
@@ -59,4 +59,4 @@ LocaleTermSchema.statics = {
 
 };
 
-mongoose.model('LocaleTerm', LocaleTermSchema);
+mongoose.model('Term', TermSchema);
