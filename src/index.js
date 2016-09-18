@@ -10,7 +10,7 @@ import sockAPI from './api/socket';
 import dbMiddleWare from './middlewares/DbMiddleware';
 import sections from './reducers/sections';
 import localeterms from './reducers/localeterms';
-import fails from './reducers/fails';
+import fail from './reducers/fail';
 import { INITIAL_STATE } from './constants/Initial';
 
 
@@ -21,7 +21,17 @@ export default options => {
     const sectionActions = require('./actions/SectionActions');
 
     const store = createStore(
-      combineReducers([sections, localeterms, fails]),
+      combineReducers({
+        //sections: sections,
+        //localeterms: localeterms,
+        //fails: fails
+
+        sections,
+        locales: {},
+        terms: {},
+        fail
+
+      }),
       INITIAL_STATE,
       applyMiddleware(dbMiddleWare)
     );

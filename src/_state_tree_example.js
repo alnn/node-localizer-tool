@@ -4,7 +4,7 @@ const state_initial = {
   sections: [],
   locales: {},
   terms: {},
-  error: null
+  fail: {}
 };
 
 const state_example = {
@@ -48,5 +48,5 @@ const state_example = {
       }
     ]
   },
-  error: null
+  fail: null
 };

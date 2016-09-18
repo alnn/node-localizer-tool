@@ -8,6 +8,7 @@ export default keyMirror({
   FETCHING_LOCALE_TERMS: null,
 
   SET_SECTIONS: null,
+  SET_LOCALES: null,
   SET_LOCALE_TERMS: null,
 
   INSERTING_SECTION: null,
