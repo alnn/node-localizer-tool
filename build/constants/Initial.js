@@ -13,4 +13,4 @@ var _Locales2 = _interopRequireDefault(_Locales);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var INITIAL_STATE = exports.INITIAL_STATE = (0, _immutable.fromJS)({ sections: [], locales: _Locales2.default, terms: {}, error: null });
+var INITIAL_STATE = exports.INITIAL_STATE = { sections: [], locales: {}, terms: {}, fail: {} };

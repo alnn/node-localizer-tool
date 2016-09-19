@@ -11,6 +11,7 @@ import dbMiddleWare from './middlewares/DbMiddleware';
 import sections from './reducers/sections';
 import terms from './reducers/terms';
 import fail from './reducers/fail';
+import locales from './reducers/locales';
 import { INITIAL_STATE } from './constants/Initial';
 
 
@@ -22,15 +23,10 @@ export default options => {
 
     const store = createStore(
       combineReducers({
-        //sections: sections,
-        //localeterms: localeterms,
-        //fails: fails
-
         sections,
-        locales: {},
-        terms: {},
+        locales,
+        terms,
         fail
-
       }),
       INITIAL_STATE,
       applyMiddleware(dbMiddleWare)

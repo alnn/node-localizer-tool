@@ -4,7 +4,7 @@ var state_initial = {
   sections: [],
   locales: {},
   terms: {},
-  error: null
+  fail: {}
 };
 
 var state_example = {
@@ -42,5 +42,5 @@ var state_example = {
       phrase: 'World!'
     }]
   },
-  error: null
+  fail: null
 };

@@ -22,31 +22,37 @@ var _sections = require('./reducers/sections');
 
 var _sections2 = _interopRequireDefault(_sections);
 
-var _localeterms = require('./reducers/localeterms');
+var _terms = require('./reducers/terms');
 
-var _localeterms2 = _interopRequireDefault(_localeterms);
+var _terms2 = _interopRequireDefault(_terms);
 
-var _fails = require('./reducers/fails');
+var _fail = require('./reducers/fail');
 
-var _fails2 = _interopRequireDefault(_fails);
+var _fail2 = _interopRequireDefault(_fail);
+
+var _locales = require('./reducers/locales');
+
+var _locales2 = _interopRequireDefault(_locales);
 
 var _Initial = require('./constants/Initial');
 
-var _Initial2 = _interopRequireDefault(_Initial);
-
-var _SectionActions = require('./actions/SectionActions');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-exports.default = {
-  init: function init(options) {
+exports.default = function (options) {
 
-    (0, _mongoose2.default)(options.mongoose);
+  (0, _mongoose2.default)(options.mongoose).once('open', function () {
 
-    var store = (0, _redux.createStore)((0, _redux.combineReducers)([_sections2.default, _localeterms2.default, _fails2.default]), _Initial2.default, (0, _redux.applyMiddleware)(_DbMiddleware2.default));
+    var sectionActions = require('./actions/SectionActions');
+
+    var store = (0, _redux.createStore)((0, _redux.combineReducers)({
+      sections: _sections2.default,
+      locales: _locales2.default,
+      terms: _terms2.default,
+      fail: _fail2.default
+    }), _Initial.INITIAL_STATE, (0, _redux.applyMiddleware)(_DbMiddleware2.default));
 
     (0, _socket2.default)(store, options.server);
 
-    store.dispatch((0, _SectionActions.fetchingSections)());
-  }
+    store.dispatch(sectionActions.fetchingSections());
+  });
 };

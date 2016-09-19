@@ -5,8 +5,8 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.actionCreator = actionCreator;
-function actionCreator(type) {
+
+exports.default = function (type) {
   for (var _len = arguments.length, argNames = Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
     argNames[_key - 1] = arguments[_key];
   }
@@ -23,4 +23,4 @@ function actionCreator(type) {
 
     return action;
   };
-}
+};

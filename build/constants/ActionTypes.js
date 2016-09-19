@@ -13,9 +13,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 exports.default = (0, _keyMirror2.default)({
 
   FETCHING_SECTIONS: null,
+  FETCHING_LOCALES: null,
   FETCHING_TERMS: null,
 
   SET_SECTIONS: null,
+  SET_LOCALES: null,
   SET_TERMS: null,
 
   INSERTING_SECTION: null,

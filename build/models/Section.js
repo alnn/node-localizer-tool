@@ -37,8 +37,8 @@ SectionSchema.methods = {
     return this.locales;
   },
   getTermsByLocale: function getTermsByLocale(locale) {
-    var LocaleTerm = _mongoose2.default.model('LocaleTerm');
-    return LocaleTerm.getList(this._id, locale);
+    var Term = _mongoose2.default.model('Term');
+    return Term.getList(this._id, locale);
   },
   toPlain: function toPlain() {
     return {

@@ -3,7 +3,6 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.sections = undefined;
 
 var _reducerCreator;
 
@@ -19,13 +18,11 @@ var _ActionTypes2 = _interopRequireDefault(_ActionTypes);
 
 var _Initial = require('../constants/Initial');
 
-var _Initial2 = _interopRequireDefault(_Initial);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var sections = exports.sections = (0, _reducerCreator3.default)(_Initial2.default, (_reducerCreator = {}, _defineProperty(_reducerCreator, _ActionTypes2.default.FETCHING_SECTIONS, function (state) {
+exports.default = (0, _reducerCreator3.default)(_Initial.INITIAL_STATE, (_reducerCreator = {}, _defineProperty(_reducerCreator, _ActionTypes2.default.FETCHING_SECTIONS, function (state) {
   return state;
 }), _defineProperty(_reducerCreator, _ActionTypes2.default.SET_SECTIONS, function (state, action) {
   return state.set('sections', (0, _immutable.fromJS)(action.result));

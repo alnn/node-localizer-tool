@@ -25,8 +25,6 @@ var _ActionTypes2 = _interopRequireDefault(_ActionTypes);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Section = _mongoose2.default.model('Section');
-
 var fetchingSections = exports.fetchingSections = (0, _actionCreator2.default)(_ActionTypes2.default.FETCHING_SECTIONS);
 var setSections = exports.setSections = (0, _actionCreator2.default)(_ActionTypes2.default.SET_SECTIONS, 'result');
 
@@ -44,6 +42,8 @@ var addLocale = exports.addLocale = (0, _actionCreator2.default)(_ActionTypes2.d
 
 var deletingLocale = exports.deletingLocale = (0, _actionCreator2.default)(_ActionTypes2.default.DELETING_LOCALE, 'sectionID', 'localeID');
 var removeLocale = exports.removeLocale = (0, _actionCreator2.default)(_ActionTypes2.default.REMOVE_LOCALE, 'sectionID', 'localeID', 'result');
+
+var Section = _mongoose2.default.model('Section');
 
 // Async action creators:
 
