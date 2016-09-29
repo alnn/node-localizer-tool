@@ -12,7 +12,7 @@ export default (store, server) => {
 
   ioServ.on('connection', socket => {
 
-    socket.emit('state', store.getState().toJS());
+    socket.emit('state', store.getState());
     socket.on('action', store.dispatch.bind(store));
 
   });
