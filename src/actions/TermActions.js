@@ -3,8 +3,6 @@ import mongoose from 'mongoose';
 import actionCreator from '../libs/actionCreator';
 import types from '../constants/ActionTypes';
 
-const Term = mongoose.model('Term');
-
 export const fetchingLocaleTerms = actionCreator(types.FETCHING_TERMS, 'section', 'locale');
 export const setLocaleTerms = actionCreator(types.SET_TERMS, 'result', 'section', 'locale');
 
@@ -18,28 +16,24 @@ export const deletingLocaleTerm = actionCreator(types.DELETING_TERM, 'id');
 export const removeLocaleTerm = actionCreator(types.REMOVE_TERM, 'id');
 
 // Async action creators:
-
 export function fetchLocaleTerms (section, locale) {
   return {
     types: {
-      pre: types.FETCHING_TERMS,
+      on: types.FETCHING_TERMS,
       success: types.SET_TERMS,
       fail: types.FAIL_FETCHING
     },
     params: {
       section,
       locale
-    },
-    requestingAPI: () => {
-
-    },
+    }
   };
 }
 
 export function insertLocaleTerm (section, locale, path) {
   return {
     types: {
-      pre: types.INSERTING_TERM,
+      on: types.INSERTING_TERM,
       success: types.ADD_TERM,
       fail: types.FAIL_INSERTING
     },
@@ -47,9 +41,6 @@ export function insertLocaleTerm (section, locale, path) {
       section,
       locale,
       path
-    },
-    requestingAPI: () => {
-
     }
   };
 }
@@ -57,16 +48,13 @@ export function insertLocaleTerm (section, locale, path) {
 export function updateLocaleTerm (id, phrase) {
   return {
     types: {
-      pre: types.UPDATING_TERM,
+      on: types.UPDATING_TERM,
       success: types.CHANGE_TERM,
       fail: types.FAIL_UPDATING
     },
     params: {
       id,
       phrase
-    },
-    requestingAPI: () => {
-
     }
   };
 }
@@ -74,15 +62,12 @@ export function updateLocaleTerm (id, phrase) {
 export function deleteLocaleTerm (id) {
   return {
     types: {
-      pre: types.DELETING_TERM,
+      on: types.DELETING_TERM,
       success: types.REMOVE_TERM,
       fail: types.FAIL_DELETING
     },
     params: {
       id
-    },
-    requestingAPI: () => {
-
     }
   };
 }

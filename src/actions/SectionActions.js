@@ -21,25 +21,21 @@ export const addLocale = actionCreator(types.ADD_LOCALE, 'sectionID', 'localeID'
 export const deletingLocale = actionCreator(types.DELETING_LOCALE, 'sectionID', 'localeID');
 export const removeLocale = actionCreator(types.REMOVE_LOCALE, 'sectionID', 'localeID', 'result');
 
-const Section = mongoose.model('Section');
-
 // Async action creators:
-
 export function fetchSections () {
   return {
     types: {
-      pre: types.FETCHING_SECTIONS,
+      on: types.FETCHING_SECTIONS,
       success: types.SET_SECTIONS,
       fail: types.FAIL_FETCHING
-    },
-    params: {}
+    }
   };
 }
 
 export function insertSection (name) {
   return {
     types: {
-      pre: types.INSERTING_SECTION,
+      on: types.INSERTING_SECTION,
       success: types.ADD_SECTION,
       fail: types.FAIL_INSERTING
     },
@@ -52,7 +48,7 @@ export function insertSection (name) {
 export function updateSection (id, name) {
   return {
     types: {
-      pre: types.UPDATING_SECTION,
+      on: types.UPDATING_SECTION,
       success: types.CHANGE_SECTION,
       fail: types.FAIL_UPDATING
     },
@@ -65,7 +61,7 @@ export function updateSection (id, name) {
 export function deleteSection (id) {
   return {
     types: {
-      pre: types.DELETING_SECTION,
+      on: types.DELETING_SECTION,
       success: types.REMOVE_SECTION,
       fail: types.FAIL_DELETING
     },
@@ -78,7 +74,7 @@ export function deleteSection (id) {
 export function insertLocale (sectionID, localeID) {
   return {
     types: {
-      pre: types.INSERTING_LOCALE,
+      on: types.INSERTING_LOCALE,
       success: types.ADD_LOCALE,
       fail: types.FAIL_INSERTING
     },
@@ -91,7 +87,7 @@ export function insertLocale (sectionID, localeID) {
 export function deleteLocale (sectionID, localeID) {
   return {
     types: {
-      pre: types.DELETING_LOCALE,
+      on: types.DELETING_LOCALE,
       success: types.REMOVE_LOCALE,
       fail: types.FAIL_DELETING
     },

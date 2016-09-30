@@ -14,15 +14,15 @@ export default function ({ dispatch }) {
       return next(action);
     }
 
-    if ('function' !== typeof requestingAPI) {
-      throw new Error('queryingAPI must be a function');
+    if ('function' !== typeof API[types.on]) {
+      throw new Error(`DB API function ${types.on} does not exist`);
     }
 
-    const { pre, success, fail } = types;
+    const { on, success, fail } = types;
 
-    dispatch({ type: pre, ...params });
+    dispatch({ type: on, ...params });
 
-    return requestingAPI().then(
+    return API[types.on](params).then(
       result => dispatch({ type: success, ...params, result })
     ).catch(
       error => dispatch({ type: fail, error })
