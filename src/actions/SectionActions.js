@@ -32,12 +32,7 @@ export function fetchSections () {
       success: types.SET_SECTIONS,
       fail: types.FAIL_FETCHING
     },
-    params: {},
-    requestingAPI: () => {
-      return Section.getList().then((result) => {
-        return result.map(item => item.toPlain());
-      });
-    },
+    params: {}
   };
 }
 
@@ -50,11 +45,6 @@ export function insertSection (name) {
     },
     params: {
       name
-    },
-    requestingAPI: () => {
-      return (new Section({ name })).save().then((result) => {
-        return result.toPlain();
-      });
     }
   };
 }
@@ -68,11 +58,6 @@ export function updateSection (id, name) {
     },
     params: {
       id, name
-    },
-    requestingAPI: () => {
-      return Section.findOneAndUpdate({ _id: id }, { name }).exec().then((section) => {
-        return section && section.toPlain();
-      });
     }
   };
 }
@@ -86,11 +71,6 @@ export function deleteSection (id) {
     },
     params: {
       id
-    },
-    requestingAPI: () => {
-      return Section.removeById(id).then(() => {
-        return id;
-      });
     }
   };
 }
@@ -104,13 +84,6 @@ export function insertLocale (sectionID, localeID) {
     },
     params: {
       sectionID, localeID
-    },
-    requestingAPI: () => {
-      return Section.find({ _id: sectionID }).exec().then((section) => {
-        return section[0].addLocale(localeID).save();
-      }).then((section) => {
-        return section && section.toPlain();
-      });
     }
   };
 }
@@ -124,13 +97,6 @@ export function deleteLocale (sectionID, localeID) {
     },
     params: {
       sectionID, localeID
-    },
-    requestingAPI: () =>  {
-      return Section.find({ _id: sectionID }).exec().then(section => {
-        return section[0].removeLocale(localeID).save();
-      }).then(section => {
-        return section && section.toPlain();
-      });
     }
   };
 }

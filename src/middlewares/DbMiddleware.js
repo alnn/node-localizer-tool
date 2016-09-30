@@ -1,11 +1,11 @@
 'use strict';
+import API from './../api/db';
 
 export default function ({ dispatch }) {
 
   return next => action => {
     const {
         types,
-        requestingAPI,
         params = {}
       } = action;
 

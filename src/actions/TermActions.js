@@ -31,9 +31,7 @@ export function fetchLocaleTerms (section, locale) {
       locale
     },
     requestingAPI: () => {
-      return Term.getList(section.id, locale.id).then((result) => {
-        return result.map(item => item.toPlain());
-      });
+
     },
   };
 }
@@ -51,12 +49,7 @@ export function insertLocaleTerm (section, locale, path) {
       path
     },
     requestingAPI: () => {
-      return (new Term({
-        _section: section,
-        path: [locale,...path]
-      })).save().then((result) => {
-        return result.toPlain();
-      });
+
     }
   };
 }
@@ -73,9 +66,7 @@ export function updateLocaleTerm (id, phrase) {
       phrase
     },
     requestingAPI: () => {
-      return Term.findOneAndUpdate({ _id: id }, { phrase }).exec().then(term => {
-        return term && term.toPlain();
-      });
+
     }
   };
 }
@@ -91,9 +82,7 @@ export function deleteLocaleTerm (id) {
       id
     },
     requestingAPI: () => {
-      return Term.removeById(id).then(() => {
-        return id;
-      });
+
     }
   };
 }

@@ -14,7 +14,6 @@ import fail from './reducers/fail';
 import locales from './reducers/locales';
 import { INITIAL_STATE } from './constants/Initial';
 
-
 export default options => {
 
   mongoose(options.mongoose).once('open', () => {
@@ -34,7 +33,8 @@ export default options => {
 
     sockAPI(store, options.server);
 
-    store.dispatch(sectionActions.fetchingSections());
+    //store.dispatch(sectionActions.fetchingSections());
+    store.dispatch(sectionActions.fetchSections());
 
   });
 
