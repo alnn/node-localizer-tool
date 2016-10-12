@@ -1,2 +1,2 @@
 # node-localizer-tool
-App localization
+Localizing application
