@@ -59,4 +59,4 @@ TermSchema.statics = {
 
 };
 
-mongoose.model('Term', TermSchema);
+module.exports = mongoose.model('Term', TermSchema);

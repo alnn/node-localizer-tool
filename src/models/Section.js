@@ -59,4 +59,4 @@ SectionSchema.statics = {
 
 };
 
-mongoose.model('Section', SectionSchema);
+module.exports = mongoose.model('Section', SectionSchema);
